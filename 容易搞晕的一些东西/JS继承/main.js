@@ -38,9 +38,6 @@ class Person {
     console.log(this.name);
   }
 }
-Person.prototype.sayName = function() {
-  console.log(this.name);
-};
 class 杨家将 extends Person {
   constructor(name, age, waihao) {
     super(name, age);
