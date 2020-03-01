@@ -1,22 +1,27 @@
-// function Product(name, price) {
-//   this.name = name;
-//   this.price = price;
-// }
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+}
 
-// function Food(name, price) {
-//   Product.call(this, name, price);
-//   this.category = "food";
-// }
+function Food(name, price) {
+  debugger;
+  Product.call(this, name, price);
+  this.category = "food";
+}
 
-// function Toy(name, price) {
-//   Product.apply(this, arguments);
-//   this.category = "toy";
-// }
+function Toy(name, price) {
+  Product.apply(this, arguments);
+  this.category = "toy";
+}
 
-// var cheese = new Food("feta", 5);
-// console.log(cheese);
+var cheese = new Food("feta", 5);
+console.log(cheese); //cheese
 // var fun = new Toy("robot", 40);
 // console.log(fun);
+const fuckFood = Food.bind(cheese);
+const fuck = new fuckFood(`fuck`, 100);
+console.log(cheese); //cheese
+console.log(fuck); //fuck
 
 // var animals = [
 //   { species: "Lion", name: "King" },
@@ -106,14 +111,24 @@
 // const module = {
 //   x: 42,
 //   getX: function() {
-//     console.log(this);
+//     // console.log(this);
 //     return this.x;
 //   }
 // };
+// const Xman = {
+//   x: 33
+// };
 // const GetX1 = module.getX;
-// console.log(GetX1.call(module));
+// console.log(GetX1.call(module)); //42
+// console.log(GetX1.call(Xman)); //33
 // const GetX2 = module.getX.bind(module);
-// console.log(GetX2());
+// console.log(GetX2()); //42
+// const GetX3 = module.getX.bind(Xman);
+// console.log(GetX3()); //33
+// const GetX4 = module.getX.bind(module);
+// console.log(GetX4.call(Xman)); //42 居然是bind厉害！！！
+// const GetX5 = module.getX.bind(module).call(Xman);
+// console.log(GetX5); //42 居然是bind厉害！！！
 
 // function list() {
 //   return Array.prototype.slice.call(arguments);
@@ -158,17 +173,17 @@
 // var flower = new LateBloomer();
 // flower.bloom(); // 一秒钟后, 调用 'declare' 方法
 
-function Point(x, y) {
-  this.x = x;
-  this.y = y;
-}
+// function Point(x, y) {
+//   this.x = x;
+//   this.y = y;
+// }
 
-Point.prototype.toString = function() {
-  return this.x + "," + this.y;
-};
+// Point.prototype.toString = function() {
+//   return this.x + "," + this.y;
+// };
 
-var p = new Point(1, 2);
-console.log(p.toString()); // '1,2'
+// var p = new Point(1, 2);
+// console.log(p.toString()); // '1,2'
 
-var emptyObj = {};
-var YAxisPoint = Point.bind(emptyObj, 0 /*x*/);
+// var emptyObj = {};
+// var YAxisPoint = Point.bind(emptyObj, 0 /*x*/);

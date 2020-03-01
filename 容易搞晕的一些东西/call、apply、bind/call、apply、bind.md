@@ -1,5 +1,27 @@
 # call、apply、bind
 
+## TODO
+
+- fn.bind(A).call(B)里面的 this 是什么 => `A`
+  ```javascript
+  ...
+  const GetX4 = module.getX.bind(module);
+  console.log(GetX4.call(Xman)); //42 module 居然是bind厉害！！！
+  const GetX5 = module.getX.bind(module).call(Xman);
+  console.log(GetX5); //42 module 居然是bind厉害！！！
+  ```
+- new fn.bind(A)呢
+  - new 比 bind 晚执行
+  - this 是 new 的时候产生的那个对象 跟 bind 的没关系
+    ```javascript
+    var cheese = new Food("feta", 5);
+    console.log(cheese); //cheese
+    const fuckFood = Food.bind(cheese);
+    const fuck = new fuckFood(`fuck`, 100);
+    console.log(cheese); //cheese
+    console.log(fuck); //fuck
+    ```
+
 ### call
 
 - 如果想让 a 函数执行时的 this 是 b 对象的时候
